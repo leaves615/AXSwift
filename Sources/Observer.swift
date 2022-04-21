@@ -89,6 +89,11 @@ public final class Observer {
             AXObserverGetRunLoopSource(axObserver),
             CFRunLoopMode.defaultMode)
     }
+    
+    /// check the observer is alive. means: axObserver is in CFRunLoop.
+    public func isAlive() -> Bool {
+        return CFRunLoopContainsSource(RunLoop.current.getCFRunLoop(), AXObserverGetRunLoopSource(axObserver), CFRunLoopMode.defaultMode)
+    }
 
     /// Adds a notification for the observer to watch.
     ///
